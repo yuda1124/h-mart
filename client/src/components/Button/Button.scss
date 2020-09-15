@@ -1,0 +1,13 @@
+.btn_empty {
+  flex: 1;
+  height: 100%;
+  border: 1px solid #EE0E51;
+  color: #EE0E51;
+  border-radius: 1vh;
+  height: 3vh;
+  margin-right: 1vh;
+  &:hover {
+    color: #fff;
+    background-color: #EE0E51;
+  }
+}

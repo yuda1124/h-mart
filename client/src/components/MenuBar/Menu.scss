@@ -1,0 +1,28 @@
+.wrap_menu {
+  flex: 1;
+  position: relative;
+  .btn_menu {
+    width: 100%;
+    height: 100%;
+  }
+  .name_menu {
+    text-align: center;
+    line-height: 5vh;
+    font-weight: bold;
+    font-size: large;
+    color: #7e8a97;  
+  }
+  &:hover {
+    .btn_menu {
+      background-color: #EE0E51;
+      transform: skewx(6deg) rotate(6deg) translateY(1vh);
+      transform-origin: bottom right;
+    }
+    .name_menu {
+      color: #fff !important;
+      transform: skewx(-6deg) rotate(-6deg) translateY(-1vh);
+      transform-origin: bottom right;
+      display: block;
+    }    
+  }
+}

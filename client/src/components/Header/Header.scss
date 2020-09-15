@@ -1,0 +1,12 @@
+.header {
+  width: 1200px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-top: 3vh;
+  .wrap_sign_button {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
