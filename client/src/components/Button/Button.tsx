@@ -12,10 +12,12 @@ function Button({ text, type, onClick }: ButtonProps) {
     switch (type) {
       case 'empty':
         return 'btn_empty';
+      case 'filled':
+        return 'btn_filled';
     }
   };
   return (
-    <button className={setButtonType()} onClick={onClick}>
+    <button className={`btn_base ${setButtonType()}`} onClick={onClick}>
       {text}
     </button>
   );

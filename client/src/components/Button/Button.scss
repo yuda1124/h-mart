@@ -1,13 +1,36 @@
 .btn_empty {
-  flex: 1;
-  height: 100%;
   border: 1px solid #EE0E51;
   color: #EE0E51;
-  border-radius: 1vh;
-  height: 3vh;
-  margin-right: 1vh;
   &:hover {
     color: #fff;
     background-color: #EE0E51;
+  }
+}
+
+.btn_base {
+    flex: 1;
+    height: 100%;
+    border-radius: 1vh;
+    height: 4vh;
+    margin-right: 1vh;
+    font-size: 1rem;
+    &:hover {
+      color: #fff;
+      background-color: #EE0E51;
+    }
+}
+
+.btn_filled {
+  flex: 1;
+  height: 100%;
+  color: #ffffff;
+  border-radius: 1vh;
+  height: 4vh;
+  margin-right: 1vh;
+  font-size: 1rem;
+  background-color: #EE0E51;
+  &:hover {
+    color: #fff;
+    background-color: #f54579;
   }
 }
