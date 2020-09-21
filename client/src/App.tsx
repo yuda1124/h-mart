@@ -6,8 +6,10 @@ import {
   Redirect,
 } from 'react-router-dom';
 import Main from './pages/Main';
-import Header from './components/Header';
 import Signin from './pages/Signin';
+import ProductPage from './pages/ProductPage';
+
+import Header from './components/Header';
 import './App.scss';
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Main />
+            <ProductPage />
           </Route>
           <Route path="/signin">
             <Signin />

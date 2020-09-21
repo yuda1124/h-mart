@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuBar from '../MenuBar';
 import Logo from '../Logo';
-import Button from '../Button';
+import { Button } from '../Button';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
