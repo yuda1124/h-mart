@@ -13,8 +13,8 @@ interface MenuProps {
 
 function MenuBar({ menuInfo }: MenuBarProps) {
   const renderMenus = () => {
-    return menuInfo.map((info: MenuProps) => {
-      return <Menu {...info} />;
+    return menuInfo.map((info: MenuProps, i) => {
+      return <Menu {...info} key={`menu_${i}`} />;
     });
   };
 

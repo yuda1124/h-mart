@@ -2,12 +2,17 @@
   width: 100%;
   max-width: 1200px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding-top: 3vh;
   .wrap_sign_button {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+  }
+  .link_page {
+    flex: 1;
+    display: flex;
+    text-decoration: none;
   }
 }
