@@ -9,5 +9,9 @@ const create = async (user: IUser): Promise<any> => {
   const newUser = await userModel.create({ ...user, password: hash });
   return newUser;
 };
+const findByEmail = async (email: string): Promise<any> => {
+  const user = await userModel.find(email);
+  return user;
+};
 
-export default { create };
+export default { create, findByEmail };

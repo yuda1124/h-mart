@@ -4,7 +4,7 @@ import { getCurrentTime } from '../utils';
 
 const CREATE_USER =
   'INSERT INTO USER(name, email, password, activation, createdAt, editedAt ) VALUES (?, ?, ?, 1, ?, ?)';
-
+const FIND_USER = 'SELECT * FROM USER WHERE email = ?';
 export default class UserModel {
   constructor() {}
 
@@ -17,6 +17,13 @@ export default class UserModel {
       getCurrentTime(),
       getCurrentTime(),
     ]);
+    connection.release();
+    return rows;
+  }
+
+  async find(email: string) {
+    const connection = await Pool.getConnection();
+    const [rows] = await connection.execute(FIND_USER, [email]);
     connection.release();
     return rows;
   }

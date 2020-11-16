@@ -1,3 +1,4 @@
+import createError from 'http-errors';
 import { IUser } from '../../interfaces';
 import { Request, Response, NextFunction } from 'express';
 import { UserService } from '../services';
@@ -7,8 +8,15 @@ const create = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const user = await UserService.create(req.body);
-  res.status(200).send(user);
+  const user = req.body;
+  const { email } = user;
+  const exist = await UserService.findByEmail(email);
+  if (exist) {
+    next(createError(403, 'duplicated email'));
+  } else {
+    const result = await UserService.create(user);
+    res.status(200).send(result);
+  }
 };
 
 export default { create };
