@@ -11,7 +11,7 @@ const create = async (
   const user = req.body;
   const { email } = user;
   const exist = await UserService.findByEmail(email);
-  if (exist) {
+  if (exist.length > 0) {
     next(createError(403, 'duplicated email'));
   } else {
     const result = await UserService.create(user);
