@@ -3,6 +3,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import passport from 'passport';
+import passportConfig from './passport';
 
 import indexRouter from './routes/index';
 import apiRouter from './routes/apiRouter';
@@ -24,6 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(passport.initialize());
+passportConfig();
 
 app.use('/api', apiRouter);
 app.use('*', indexRouter);

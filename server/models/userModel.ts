@@ -21,7 +21,7 @@ export default class UserModel {
     return rows;
   }
 
-  async find(email: string) {
+  async find(email: string): Promise<any> {
     const connection = await Pool.getConnection();
     const [rows] = await connection.execute(FIND_USER, [email]);
     connection.release();
