@@ -1,6 +1,6 @@
 import { comparePassword } from '../utils';
 import UserModel from '../models/userModel';
-const LocalStrategy = require('passport-local').Strategy;
+import { Strategy as LocalStrategy } from 'passport-local';
 const userModel = new UserModel();
 
 export default new LocalStrategy(
