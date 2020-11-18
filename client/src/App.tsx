@@ -6,7 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import Main from './pages/Main';
-import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 import ProductPage from './pages/ProductPage';
 
 import Header from './components/Header';
@@ -20,8 +20,8 @@ function App() {
           <Route exact path="/">
             <ProductPage />
           </Route>
-          <Route path="/signin">
-            <Signin />
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Redirect path="*" to="/" />
         </Switch>

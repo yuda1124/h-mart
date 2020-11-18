@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../components/Input';
 import { Button } from '../../components/Button';
 import Checkbox from '../../components/Checkbox';
-import './Signin.scss';
+import './Signup.scss';
 
 function Signin() {
   const [userInfo, setInfo] = useState({
