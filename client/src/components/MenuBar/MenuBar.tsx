@@ -11,7 +11,7 @@ interface MenuProps {
   name: string;
 }
 
-function MenuBar({ menuInfo }: MenuBarProps) {
+const MenuBar = ({ menuInfo }: MenuBarProps) => {
   const renderMenus = () => {
     return menuInfo.map((info: MenuProps, i) => {
       return <Menu {...info} key={`menu_${i}`} />;
@@ -19,7 +19,7 @@ function MenuBar({ menuInfo }: MenuBarProps) {
   };
 
   return <div className="wrap_menubar">{renderMenus()}</div>;
-}
+};
 
 MenuBar.defaultProps = {
   menuInfo: [

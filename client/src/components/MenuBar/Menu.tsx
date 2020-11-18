@@ -6,7 +6,7 @@ interface MenuProps {
   name: string;
 }
 
-function Menu({ id, name }: MenuProps) {
+const Menu = ({ id, name }: MenuProps) => {
   return (
     <div className={`wrap_menu ${id === 1 ? 'current' : ''}`}>
       <button
@@ -18,6 +18,6 @@ function Menu({ id, name }: MenuProps) {
       </button>
     </div>
   );
-}
+};
 
 export default Menu;

@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-function Button({ text, type, onClick }: ButtonProps) {
+const Button = ({ text, type, onClick }: ButtonProps) => {
   const setButtonType = () => {
     switch (type) {
       case 'empty':
@@ -21,6 +21,6 @@ function Button({ text, type, onClick }: ButtonProps) {
       {text}
     </button>
   );
-}
+};
 
 export default Button;

@@ -11,7 +11,7 @@ import ProductPage from './pages/ProductPage';
 
 import Header from './components/Header';
 import './App.scss';
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
@@ -28,6 +28,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;

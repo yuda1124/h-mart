@@ -6,7 +6,7 @@ interface RoundProps {
   onClick: () => void;
 }
 
-function Round({ type, onClick }: RoundProps) {
+const Round = ({ type, onClick }: RoundProps) => {
   const renderButtonImage = () => {
     switch (type) {
       case 'add':
@@ -28,6 +28,6 @@ function Round({ type, onClick }: RoundProps) {
       {renderButtonImage()}
     </button>
   );
-}
+};
 
 export default Round;

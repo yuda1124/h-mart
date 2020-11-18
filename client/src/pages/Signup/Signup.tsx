@@ -4,7 +4,7 @@ import { Button } from '../../components/Button';
 import Checkbox from '../../components/Checkbox';
 import './Signup.scss';
 
-function Signin() {
+const Signin = () => {
   const [userInfo, setInfo] = useState({
     name: '',
     email: '',
@@ -61,6 +61,6 @@ function Signin() {
       </div>
     </div>
   );
-}
+};
 
 export default Signin;
