@@ -1,5 +1,5 @@
 import React from 'react';
-import { Round } from '../Button';
+import { Round } from '..';
 import Palatte from './Palette';
 import './ProductThumb.scss';
 
