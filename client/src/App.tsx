@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import * as Pages from './pages';
 
-import Header from './components/Header';
+import { Header } from './components';
 import './App.scss';
 const App = () => {
   return (
@@ -20,6 +20,9 @@ const App = () => {
           </Route>
           <Route path="/signup">
             <Pages.Signup />
+          </Route>
+          <Route path="/signin">
+            <Pages.Signin />
           </Route>
           <Redirect path="*" to="/" />
         </Switch>
