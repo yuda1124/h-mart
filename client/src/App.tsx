@@ -5,9 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Main from './pages/Main';
-import Signup from './pages/Signup';
-import ProductPage from './pages/ProductPage';
+import * as Pages from './pages';
 
 import Header from './components/Header';
 import './App.scss';
@@ -18,10 +16,10 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/">
-            <ProductPage />
+            <Pages.ProductPage />
           </Route>
           <Route path="/signup">
-            <Signup />
+            <Pages.Signup />
           </Route>
           <Redirect path="*" to="/" />
         </Switch>
