@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Input from '../../components/Input';
-import { Button } from '../../components/Button';
-import Checkbox from '../../components/Checkbox';
+import { Input } from '../../components';
+import { Button } from '../../components';
+import { Checkbox } from '../../components';
 import './Signup.scss';
 
 const Signin = () => {
