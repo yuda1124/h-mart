@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import passport from 'passport';
 import passportConfig from './passport';
+import cors from 'cors';
 
 import indexRouter from './routes/index';
 import apiRouter from './routes/apiRouter';
@@ -15,12 +16,12 @@ interface Error {
   status?: number;
   message?: string;
 }
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname, '../client/build'));
 app.engine('html', require('ejs').renderFile);
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
