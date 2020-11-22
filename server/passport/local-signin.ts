@@ -11,7 +11,7 @@ export default new LocalStrategy(
       if (user.length === 0 || !user) {
         return done(null, false, { message: 'incorrect email' });
       }
-      if (!comparePassword(password, user[0].password)) {
+      if (!(await comparePassword(password, user[0].password))) {
         return done(null, false, { message: 'incorrect password' });
       }
       return done(null, user[0]);
