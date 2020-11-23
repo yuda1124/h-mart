@@ -37,7 +37,7 @@ const signIn = async (
       expiresIn: '2h',
     });
     res.cookie('token', token, { httpOnly: true });
-    return res.json({ success: true, token });
+    return res.json({ success: true, user: payload });
   })(req, res, next);
 };
 export default { create, signIn };
