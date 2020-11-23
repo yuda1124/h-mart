@@ -3,7 +3,11 @@ import { Input } from '..';
 import { Button } from '..';
 import './Signin.scss';
 
-const Signin = () => {
+interface SigninProps {
+  requestSignin: (email: string, password: string) => void;
+}
+
+const Signin = ({ requestSignin }: SigninProps) => {
   const [userInfo, setInfo] = useState({
     email: '',
     password: '',
@@ -34,7 +38,13 @@ const Signin = () => {
           />
         </div>
         <div className="wrap_signin_button">
-          <Button text="Sign In" type="empty" onClick={() => {}} />
+          <Button
+            text="Sign In"
+            type="empty"
+            onClick={() => {
+              requestSignin(email, password);
+            }}
+          />
           <Button text="Sign Up" type="empty" onClick={() => {}} />
         </div>
       </div>
