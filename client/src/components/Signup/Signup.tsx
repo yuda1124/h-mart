@@ -26,13 +26,12 @@ const Signup = ({ requestSignup }: SignupProps) => {
     return null;
   };
   const applySignUp = () => {
-    // const inputError = validateCreateUser(userInfo);
-    // console.log(userInfo);
+    const inputError = validateCreateUser(userInfo);
 
-    // if (Object.keys(inputError).length > 0) {
-    //   setError(inputError);
-    //   return;
-    // }
+    if (Object.keys(inputError).length > 0) {
+      setError(inputError);
+      return;
+    }
     requestSignup(userInfo.email, userInfo.password, userInfo.name);
   };
 
