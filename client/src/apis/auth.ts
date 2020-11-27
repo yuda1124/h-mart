@@ -6,7 +6,7 @@ export const signin = async (
   password: string
 ): Promise<User> => {
   const response = await api.post('/user/signin', { email, password });
-  return response.data;
+  return response.data.user;
 };
 
 export const signup = async (
