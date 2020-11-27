@@ -22,3 +22,7 @@ export const signinByJwt = async (): Promise<User> => {
   const response = await api.post('/user/token');
   return response.data.user;
 };
+
+export const logout = async (): Promise<void> => {
+  await api.post('user/logout');
+};

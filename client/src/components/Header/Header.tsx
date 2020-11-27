@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 import { AuthState } from '../../modules/auth';
 import './Header.scss';
 
-const Header = ({ user }: AuthState) => {
+interface HeaderProps extends AuthState {
+  requestLogout: () => void;
+}
+
+const Header = ({ user, requestLogout }: HeaderProps) => {
   const renderAuthButtons = () => {
     return (
       <div className="wrap_sign_button">
@@ -20,7 +24,18 @@ const Header = ({ user }: AuthState) => {
     );
   };
   const renderProfile = () => {
-    return <div>{user?.name}</div>;
+    return (
+      <div>
+        <span>{user?.name}</span>
+        <Button
+          type="empty"
+          onClick={() => {
+            requestLogout();
+          }}
+          text="Logout"
+        />
+      </div>
+    );
   };
   return (
     <header className="header">

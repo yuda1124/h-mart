@@ -1,8 +1,8 @@
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '..';
 import { AuthAction, User } from './types';
-import { signin, signup, signinByJwt } from '../../apis/auth';
-import { successSignin } from './actions';
+import { signin, signup, signinByJwt, logout } from '../../apis/auth';
+import { successSignin, successLogout } from './actions';
 import { push } from 'connected-react-router';
 
 export const signinThunk = (
@@ -32,7 +32,9 @@ export const signinByJwtThunk = (): ThunkAction<
       dispatch(successSignin(user));
       dispatch(push('/'));
     } catch (e) {
-      console.log(e.response.data.messages);
+      if (e.response && e.response.data) {
+        console.log(e.response.data.messages);
+      }
     }
   };
 };
@@ -45,6 +47,25 @@ export const signupThunk = (
   return async (dispatch) => {
     try {
       const user = await signup(email, password, name);
+      dispatch(push('/'));
+    } catch (e) {
+      if (e.response && e.response.data) {
+        console.log(e.response.data.messages);
+      }
+    }
+  };
+};
+
+export const logoutThunk = (): ThunkAction<
+  Promise<void>,
+  RootState,
+  null,
+  any
+> => {
+  return async (dispatch) => {
+    try {
+      await logout();
+      dispatch(successLogout());
       dispatch(push('/'));
     } catch (e) {
       if (e.response && e.response.data) {
