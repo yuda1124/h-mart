@@ -16,10 +16,10 @@ const create = async (
     return next(createError(403, 'duplicated email'));
   }
   const result = await UserService.create(user);
-  res.status(200).send(result);
+  res.status(200).json({ success: true });
 };
 
-const signIn = async (
+const signin = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -56,4 +56,14 @@ const signinByJwt = async (
     return res.json({ success: true, user: payload });
   })(req, res, next);
 };
-export default { create, signIn, signinByJwt };
+
+const logout = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  res.cookie('token', null, { maxAge: 0 });
+  res.json({ success: true });
+};
+
+export default { create, signin, signinByJwt, logout };
