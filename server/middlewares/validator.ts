@@ -2,10 +2,13 @@ import Joi, { ValidationError } from 'joi';
 import { Request, Response, NextFunction } from 'express';
 import { HTTP_STATUS, ERROR_MESSAGE } from '../constants';
 
-const EMAIL = Joi.string().email().required().messages({
-  'string.pattern.base': ERROR_MESSAGE.EMAIL_TYPE,
-  'string.empty': ERROR_MESSAGE.EMAIL_EMPTY,
-});
+const EMAIL = Joi.string()
+  .email({ tlds: { allow: false } })
+  .required()
+  .messages({
+    'string.email': ERROR_MESSAGE.EMAIL_TYPE,
+    'string.empty': ERROR_MESSAGE.EMAIL_EMPTY,
+  });
 const NAME = Joi.string().min(2).max(10).required().messages({
   'string.min': ERROR_MESSAGE.NAME_TYPE,
   'string.max': ERROR_MESSAGE.NAME_TYPE,
