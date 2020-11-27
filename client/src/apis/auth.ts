@@ -17,3 +17,8 @@ export const signup = async (
   const response = await api.post('/user/signup', { email, name, password });
   return response.data;
 };
+
+export const signinByJwt = async (): Promise<User> => {
+  const response = await api.post('/user/token');
+  return response.data.user;
+};
