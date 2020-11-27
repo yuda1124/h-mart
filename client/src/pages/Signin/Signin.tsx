@@ -8,11 +8,7 @@ const Signin = () => {
     dispatch(signinThunk(email, password));
   };
 
-  return (
-    <>
-      <SigninComponent requestSignin={requestSignin} />
-    </>
-  );
+  return <SigninComponent requestSignin={requestSignin} />;
 };
 
 export default Signin;
