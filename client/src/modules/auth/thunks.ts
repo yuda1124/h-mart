@@ -1,7 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '..';
 import { AuthAction } from './types';
-import { signin } from '../../apis/auth';
+import { signin, signup } from '../../apis/auth';
 import { successSignin } from './actions';
 
 export const signinThunk = (
@@ -11,10 +11,25 @@ export const signinThunk = (
   return async (dispatch) => {
     try {
       const user = await signin(email, password);
-      console.log(user);
       dispatch(successSignin(user));
     } catch (e) {
-      console.log(e.message);
+      console.log(e.response.data.messages);
+    }
+  };
+};
+
+export const signupThunk = (
+  email: string,
+  password: string,
+  name: string
+): ThunkAction<Promise<void>, RootState, null, AuthAction> => {
+  return async (dispatch) => {
+    try {
+      const user = await signup(email, password, name);
+    } catch (e) {
+      if (e.response && e.response.data) {
+        console.log(e.response.data.messages);
+      }
     }
   };
 };
