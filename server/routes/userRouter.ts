@@ -6,4 +6,5 @@ const router = express.Router();
 
 router.post('/signup', validateCreateUser, wrapAsync(UserController.create));
 router.post('/signin', wrapAsync(UserController.signIn));
+router.post('/token', wrapAsync(UserController.signinByJwt));
 export default router;

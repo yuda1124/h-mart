@@ -1,5 +1,4 @@
 import createError from 'http-errors';
-import { IUser } from '../../interfaces';
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { UserService } from '../services';
@@ -40,4 +39,21 @@ const signIn = async (
     return res.json({ success: true, user: payload });
   })(req, res, next);
 };
-export default { create, signIn };
+
+const signinByJwt = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  passport.authenticate('jwt-signin', (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(createError(401, info.message));
+    }
+    const payload = { email: user.email, name: user.name };
+    return res.json({ success: true, user: payload });
+  })(req, res, next);
+};
+export default { create, signIn, signinByJwt };
