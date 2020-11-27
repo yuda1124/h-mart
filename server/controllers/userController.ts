@@ -36,7 +36,7 @@ const signIn = async (
     const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
       expiresIn: '2h',
     });
-    res.cookie('token', token, { httpOnly: true });
+    res.cookie('token', token, { httpOnly: true, maxAge: 60 * 60 * 2 * 1000 });
     return res.json({ success: true, user: payload });
   })(req, res, next);
 };
