@@ -1,15 +1,10 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import * as Pages from '../pages';
 import { Header as HeaderContainer } from '../containers';
 
 const routes = (
-  <Router>
+  <>
     <HeaderContainer />
     <Switch>
       <Route exact path="/">
@@ -23,7 +18,7 @@ const routes = (
       </Route>
       <Redirect path="*" to="/" />
     </Switch>
-  </Router>
+  </>
 );
 
 export default routes;
