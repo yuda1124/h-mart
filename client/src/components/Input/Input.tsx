@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   onChange: (value: string) => void;
+  errorMessage?: string | null;
 }
 
 const Input = ({
@@ -15,7 +16,11 @@ const Input = ({
   placeholder = '',
   onChange,
   type = 'text',
+  errorMessage,
 }: InputProps) => {
+  const renderErrorMessage = () => {
+    return <p className="on_error">{errorMessage}</p>;
+  };
   return (
     <div className="wrap_input">
       <input
@@ -24,6 +29,7 @@ const Input = ({
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
       />
+      {errorMessage && renderErrorMessage()}
     </div>
   );
 };

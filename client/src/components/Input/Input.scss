@@ -8,9 +8,12 @@
     box-sizing: border-box;
     text-indent: 1rem;
     font-size: 0.8rem;
-
   }
   margin: 1rem 0;
+  .on_error {
+    color: #EE0E51;
+    margin-top: 0.5rem;  
+  }
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #D6E4E8;
