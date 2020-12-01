@@ -9,7 +9,7 @@ import {
 import { Review } from '.';
 
 @Entity()
-export class User {
+export class Product {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -17,10 +17,19 @@ export class User {
   name!: string;
 
   @Column({ type: 'varchar', length: 45 })
-  email!: string;
+  model!: string;
 
-  @Column({ type: 'varchar', length: 256 })
-  password!: string;
+  @Column({ type: 'int' })
+  price!: number;
+
+  @Column({ type: 'json' })
+  colors!: JSON;
+
+  @Column({ name: 'thumb_url', type: 'varchar', length: 256 })
+  thumbUrl!: string;
+
+  @Column({ name: 'info_url', type: 'varchar', length: 256 })
+  infoUrl!: string;
 
   @Column({ type: 'tinyint', unsigned: true, default: 1 })
   activation!: boolean;
@@ -31,6 +40,6 @@ export class User {
   @UpdateDateColumn({ type: 'datetime', name: 'edited_at' })
   editedAt!: Date;
 
-  @OneToMany(() => Review, (review) => review.user)
-  reviews!: Review[];
+  @OneToMany(() => Review, (review) => review.products)
+  reviews!: Review;
 }

@@ -4,23 +4,17 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
+  ManyToOne,
 } from 'typeorm';
-import { Review } from '.';
+import { Product, User } from '.';
 
 @Entity()
-export class User {
+export class Review {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({ type: 'varchar', length: 45 })
-  name!: string;
-
-  @Column({ type: 'varchar', length: 45 })
-  email!: string;
-
-  @Column({ type: 'varchar', length: 256 })
-  password!: string;
+  @Column({ type: 'varchar', length: 255 })
+  content!: string;
 
   @Column({ type: 'tinyint', unsigned: true, default: 1 })
   activation!: boolean;
@@ -31,6 +25,15 @@ export class User {
   @UpdateDateColumn({ type: 'datetime', name: 'edited_at' })
   editedAt!: Date;
 
-  @OneToMany(() => Review, (review) => review.user)
-  reviews!: Review[];
+  @ManyToOne(() => Product, (product) => product.reviews, {
+    onDelete: 'RESTRICT',
+    nullable: false,
+  })
+  products!: Product;
+
+  @ManyToOne(() => User, (user) => user.reviews, {
+    onDelete: 'RESTRICT',
+    nullable: false,
+  })
+  user!: User;
 }
