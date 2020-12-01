@@ -1,13 +1,12 @@
 import { comparePassword } from '../utils';
-import UserModel from '../models/userModel';
+import { UserService } from '../services';
 import { Strategy as LocalStrategy } from 'passport-local';
-const userModel = new UserModel();
 
 export default new LocalStrategy(
   { usernameField: 'email', passwordField: 'password', session: false },
   async (email: string, password: string, done: any) => {
     try {
-      const user = await userModel.find(email);
+      const user = await UserService.findByEmail(email);
       if (user.length === 0 || !user) {
         return done(null, false, { message: 'incorrect email' });
       }
