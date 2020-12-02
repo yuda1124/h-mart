@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { UserService } from '../services';
 import passport from 'passport';
+import { HTTP_STATUS } from '../constants';
 
 const create = async (
   req: Request,
@@ -13,10 +14,10 @@ const create = async (
   const { email } = user;
   const exist = await UserService.findByEmail(email);
   if (exist.length > 0) {
-    return next(createError(403, 'duplicated email'));
+    return next(createError(HTTP_STATUS.FORBIDDEN, 'duplicated email'));
   }
   const result = await UserService.create(user);
-  res.status(200).json({ success: true });
+  res.json({ success: true });
 };
 
 const signin = async (
@@ -29,7 +30,7 @@ const signin = async (
       return next(err);
     }
     if (!user) {
-      return next(createError(401, info.message));
+      return next(createError(HTTP_STATUS.UNAUTHORIZED, info.message));
     }
     const payload = { email: user.email, name: user.name };
     const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
@@ -50,7 +51,7 @@ const signinByJwt = async (
       return next(err);
     }
     if (!user) {
-      return next(createError(401, info.message));
+      return next(createError(HTTP_STATUS.UNAUTHORIZED, info.message));
     }
     const payload = { email: user.email, name: user.name };
     return res.json({ success: true, user: payload });

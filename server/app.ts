@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { createConnection } from 'typeorm';
 import createError from 'http-errors';
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
@@ -9,6 +11,12 @@ import cors from 'cors';
 
 import indexRouter from './routes/index';
 import apiRouter from './routes/apiRouter';
+
+createConnection()
+  .then(() => {
+    console.log('Database Connected :)');
+  })
+  .catch((error) => console.log(error));
 
 const app = express();
 

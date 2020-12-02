@@ -1,7 +1,6 @@
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
 import { Request } from 'express';
-import UserModel from '../models/userModel';
-const userModel = new UserModel();
+import { UserService } from '../services';
 
 const cookieExtractor = (req: Request) => {
   var token = null;
@@ -18,7 +17,7 @@ export default new JWTStrategy(
   },
   async (jwtPayload, done) => {
     try {
-      const user = await userModel.find(jwtPayload.email);
+      const user = await UserService.findByEmail(jwtPayload.email);
       if (user.length === 0 || !user) {
         return done(null, false, { message: 'unvalidate token' });
       }
