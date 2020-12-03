@@ -7,9 +7,17 @@ const createBulk = async (
   next: NextFunction
 ): Promise<void> => {
   const { products } = req.body;
-  console.log(products);
   await ProductService.createBulk(products);
   res.json({ success: true });
 };
 
-export default { createBulk };
+const find = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  const products = await ProductService.find();
+  res.json({ success: true, products });
+};
+
+export default { createBulk, find };
