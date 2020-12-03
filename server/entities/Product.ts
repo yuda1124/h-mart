@@ -19,6 +19,9 @@ export class Product {
   @Column({ type: 'varchar', length: 45 })
   model!: string;
 
+  @Column({ type: 'varchar', length: 45 })
+  maker!: string;
+
   @Column({ type: 'int' })
   price!: number;
 
