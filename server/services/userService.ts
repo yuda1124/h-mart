@@ -1,4 +1,4 @@
-import { IUser } from '../../interfaces';
+import { IUser } from '../interfaces';
 import { generateHash } from '../utils';
 import { getManager } from 'typeorm';
 import { User } from '../entities/User';
