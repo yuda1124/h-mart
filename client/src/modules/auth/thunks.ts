@@ -3,7 +3,7 @@ import { RootState } from '..';
 import { AuthAction, User } from './types';
 import { signin, signup, signinByJwt, logout } from '../../apis/auth';
 import { successSignin, successLogout } from './actions';
-import { push } from 'connected-react-router';
+import { push, replace } from 'connected-react-router';
 
 export const signinThunk = (
   email: string,
@@ -15,7 +15,11 @@ export const signinThunk = (
       dispatch(successSignin(user));
       dispatch(push('/'));
     } catch (e) {
-      console.log(e.response.data.messages);
+      dispatch(
+        replace('/signin', {
+          errorStatusCode: e.response.status,
+        })
+      );
     }
   };
 };
@@ -32,9 +36,9 @@ export const signinByJwtThunk = (): ThunkAction<
       dispatch(successSignin(user));
       dispatch(push('/'));
     } catch (e) {
-      if (e.response && e.response.data) {
-        console.log(e.response.data.messages);
-      }
+      replace('/signin', {
+        errorStatusCode: e.response.status,
+      });
     }
   };
 };
@@ -49,9 +53,9 @@ export const signupThunk = (
       const user = await signup(email, password, name);
       dispatch(push('/'));
     } catch (e) {
-      if (e.response && e.response.data) {
-        console.log(e.response.data.messages);
-      }
+      replace('/signin', {
+        errorStatusCode: e.response.status,
+      });
     }
   };
 };
