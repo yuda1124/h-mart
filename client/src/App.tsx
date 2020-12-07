@@ -1,6 +1,7 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { History } from 'history';
+import { ErrorHandler } from './hocs';
 import routes from './routes';
 import './App.scss';
 
@@ -11,7 +12,9 @@ interface AppProps {
 const App = ({ history }: AppProps) => {
   return (
     <ConnectedRouter history={history}>
-      <div className="App">{routes}</div>
+      <ErrorHandler>
+        <div className="App">{routes}</div>
+      </ErrorHandler>
     </ConnectedRouter>
   );
 };
