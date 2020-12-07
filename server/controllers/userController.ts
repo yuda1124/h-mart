@@ -14,7 +14,7 @@ const create = async (
   const { email } = user;
   const exist = await UserService.findByEmail(email);
   if (exist.length > 0) {
-    return next(createError(HTTP_STATUS.FORBIDDEN, 'duplicated email'));
+    return next(createError(HTTP_STATUS.UNAUTHORIZED, 'duplicated email'));
   }
   const result = await UserService.create(user);
   res.json({ success: true });
