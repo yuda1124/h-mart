@@ -10,7 +10,6 @@ export const ErrorHandler = ({
 }: ErrorHandlerProps): React.ReactElement => {
   const location = useLocation();
   const state: any = location.state;
-  console.log(location);
   if (state && state.errorStatueCode) {
     switch (state.errorStatueCode) {
       case 404:
