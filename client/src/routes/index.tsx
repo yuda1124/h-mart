@@ -1,11 +1,15 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import * as Pages from '../pages';
-import { Header as HeaderContainer } from '../containers';
+import {
+  Header as HeaderContainer,
+  Loading as LoadingContainer,
+} from '../containers';
 
 const routes = (
   <>
     <HeaderContainer />
+    <LoadingContainer />
     <Switch>
       <Route exact path="/">
         <Pages.ProductPage />
