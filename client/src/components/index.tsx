@@ -7,3 +7,5 @@ export * from './MenuBar';
 export * from './Product';
 export * from './Signin';
 export * from './Signup';
+export * from './Spinner';
+export * from './Shadow';
