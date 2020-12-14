@@ -2,12 +2,10 @@ import React, { ReactElement } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Page404 } from '../pages';
 interface ErrorHandlerProps {
-  children: React.ReactElement;
+  children: ReactElement;
 }
 
-export const ErrorHandler = ({
-  children,
-}: ErrorHandlerProps): React.ReactElement => {
+export const ErrorHandler = ({ children }: ErrorHandlerProps): ReactElement => {
   const location = useLocation();
   const state: any = location.state;
   if (state && state.errorStatueCode) {
